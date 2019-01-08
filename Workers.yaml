@@ -1,0 +1,60 @@
+openapi: 3.0.1
+info:
+  title: defaultTitle
+  description: defaultDescription
+  version: '0.1'
+servers:
+  - url: 'http://adpmobile.esi.adp.com'
+paths:
+  /hr/v2/workers/:
+    get:
+      description: Auto generated using Swagger Inspector
+      parameters:
+        - name: orgoid
+          in: header
+          schema:
+            type: string
+          example: '8979496589794965'
+        - name: associateoid
+          in: header
+          schema:
+            type: string
+          example: '8979496530114'
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+      servers:
+        - url: 'http://adpmobile.esi.adp.com'
+    servers:
+      - url: 'http://adpmobile.esi.adp.com'
+  /hr/v2/workers/897949651:
+    get:
+      description: Auto generated using Swagger Inspector
+      parameters:
+        - name: orgoid
+          in: header
+          schema:
+            type: string
+          example: '8979496589794965'
+        - name: associateoid
+          in: header
+          schema:
+            type: string
+          example: '8979496530114'
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+      servers:
+        - url: 'http://adpmobile.esi.adp.com'
+    servers:
+      - url: 'http://adpmobile.esi.adp.com'

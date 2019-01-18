@@ -43,7 +43,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200"
+                  "$ref" : "#/components/schemas/employee"
                 }
               }
             }
@@ -99,7 +99,7 @@
         }
       }
     },
-    "/employee/" : {
+    "/employee" : {
       "get" : {
         "tags" : [ "Get All Employees" ],
         "summary" : "This returns all Employees details",
@@ -137,7 +137,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200"
+                  "$ref" : "#/components/schemas/employee"
                 }
               }
             }
@@ -192,11 +192,43 @@
           }
         }
       }
+    },
+    "/employee/post" : {
+      "post" : {
+        "tags" : [ "Add Employee Data" ],
+        "summary" : "Add a new Employee",
+        "description" : "Adds Employee Data to the Database",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/employee"
+              }
+            },
+            "application/xml" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/employee"
+              }
+            },
+            "text/plain" : {
+              "schema" : {
+                "type" : "string"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Employee Created"
+          }
+        }
+      }
     }
   },
   "components" : {
     "schemas" : {
-      "inline_response_200" : {
+      "employee" : {
         "type" : "object",
         "properties" : {
           "ID" : {

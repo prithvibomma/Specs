@@ -1,104 +1,109 @@
 {
-  "openapi" : "3.0.1",
+  "openapi" : "3.0.0",
   "info" : {
-    "title" : "defaultTitle",
-    "description" : "defaultDescription",
-    "version" : "0.1"
+    "title" : "Employee API",
+    "description" : "**Returns Employee Details**",
+    "contact" : {
+      "name" : "ADP Marketplace API support",
+      "url" : "http://__/",
+      "email" : "adpapisupport@adp.com"
+    },
+    "version" : "1.0.0"
   },
   "servers" : [ {
-    "url" : "http://adpmobile.esi.adp.com"
+    "url" : "https://virtserver.swaggerhub.com/prithvibomma/MyAPI/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
+    "url" : "http://_host_/",
+    "description" : "Production Url"
+  }, {
+    "url" : "http://_host2_/",
+    "description" : "Test Url"
   } ],
   "paths" : {
-    "/hr/v2/workers/" : {
+    "/employee/{employeeid}" : {
       "get" : {
-        "description" : "Auto generated using Swagger Inspector",
+        "tags" : [ "Get Employee Data" ],
+        "summary" : "This returns Employee details based on EmployeeID",
+        "description" : "Get Employee details of an Employee",
         "parameters" : [ {
-          "name" : "orgoid",
-          "in" : "header",
-          "required" : false,
+          "name" : "employeeid",
+          "in" : "path",
+          "description" : "ID of the Employee",
+          "required" : true,
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "type" : "string"
-          },
-          "example" : "8979496589794965"
-        }, {
-          "name" : "associateoid",
-          "in" : "header",
-          "required" : false,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "example" : "8979496530114"
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 2001,
+            "default" : 1001
+          }
         } ],
         "responses" : {
           "200" : {
-            "description" : "Auto generated using Swagger Inspector",
+            "description" : "Successfull Response",
             "content" : {
-              "application/json; charset=utf-8" : {
+              "application/json" : {
                 "schema" : {
-                  "type" : "string"
-                },
-                "examples" : { }
+                  "$ref" : "#/components/schemas/inline_response_200"
+                }
               }
             }
-          }
-        },
-        "servers" : [ {
-          "url" : "http://adpmobile.esi.adp.com"
-        } ]
-      },
-      "servers" : [ {
-        "url" : "http://adpmobile.esi.adp.com"
-      } ]
-    },
-    "/hr/v2/workers/897949651" : {
-      "get" : {
-        "description" : "Auto generated using Swagger Inspector",
-        "parameters" : [ {
-          "name" : "orgoid",
-          "in" : "header",
-          "required" : false,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string"
           },
-          "example" : "8979496589794965"
-        }, {
-          "name" : "associateoid",
-          "in" : "header",
-          "required" : false,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "example" : "8979496530114"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Auto generated using Swagger Inspector",
-            "content" : {
-              "application/json; charset=utf-8" : {
+          "400" : {
+            "description" : "Bad Request",
+            "headers" : {
+              "Content-Type" : {
+                "description" : "Content-Type of the response",
+                "style" : "simple",
+                "explode" : false,
                 "schema" : {
                   "type" : "string"
-                },
-                "examples" : { }
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "example" : {
+                    "error" : "bad request",
+                    "error_code" : "1000"
+                  }
+                }
               }
             }
+          },
+          "404" : {
+            "description" : "A user with specified id not found"
           }
-        },
-        "servers" : [ {
-          "url" : "http://adpmobile.esi.adp.com"
-        } ]
-      },
-      "servers" : [ {
-        "url" : "http://adpmobile.esi.adp.com"
-      } ]
+        }
+      }
     }
   },
-  "components" : { }
+  "components" : {
+    "schemas" : {
+      "inline_response_200" : {
+        "type" : "object",
+        "properties" : {
+          "ID" : {
+            "minimum" : 1001,
+            "type" : "number",
+            "default" : 1001
+          },
+          "Name" : {
+            "type" : "string"
+          },
+          "City" : {
+            "type" : "string"
+          },
+          "DoB" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }
+      }
+    }
+  }
 }

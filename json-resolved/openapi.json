@@ -221,6 +221,12 @@
         "responses" : {
           "201" : {
             "description" : "Employee Created"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
           }
         }
       }

@@ -20,6 +20,7 @@
     "/hr/v2/workers/" : {
       "get" : {
         "tags" : [ "Workers" ],
+        "summary" : "Workers",
         "description" : "Request the list of all available workers that the requester is authorized to view",
         "operationId" : "2aa32939-9059-4187-8785-0eb593ece43b",
         "parameters" : [ {
@@ -45,11 +46,11 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Returns",
+            "description" : "Returns all the available workers that the requester is authorized to view",
             "content" : {
               "application/json; charset=utf-8" : {
                 "schema" : {
-                  "type" : "string"
+                  "$ref" : "#/components/schemas/workers"
                 },
                 "examples" : { }
               }
@@ -67,6 +68,7 @@
     "/hr/v2/workers/897949651" : {
       "get" : {
         "tags" : [ "Workers" ],
+        "summary" : "Workers",
         "description" : "Auto generated using Swagger Inspector",
         "parameters" : [ {
           "name" : "orgoid",
@@ -91,7 +93,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Auto generated using Swagger Inspector",
+            "description" : "Returns all the available workers that the requester is authorized to view",
             "content" : {
               "application/json; charset=utf-8" : {
                 "schema" : {
@@ -111,5 +113,328 @@
       } ]
     }
   },
-  "components" : { }
+  "components" : {
+    "schemas" : {
+      "codeValueShortName" : {
+        "type" : "object",
+        "properties" : {
+          "codeValue" : {
+            "type" : "string"
+          },
+          "shortName" : {
+            "type" : "string"
+          }
+        }
+      },
+      "schemecode" : {
+        "type" : "object",
+        "properties" : {
+          "shortname" : {
+            "type" : "string"
+          }
+        }
+      },
+      "workerID" : {
+        "type" : "object",
+        "properties" : {
+          "idValue" : {
+            "type" : "string"
+          },
+          "schemeCode" : {
+            "$ref" : "#/components/schemas/schemecode"
+          }
+        }
+      },
+      "genderCode" : {
+        "type" : "object",
+        "properties" : {
+          "codeValue" : {
+            "type" : "string"
+          },
+          "shortname" : {
+            "type" : "string"
+          },
+          "longname" : {
+            "type" : "string"
+          }
+        }
+      },
+      "nameCode" : {
+        "type" : "object",
+        "properties" : {
+          "codeValues" : {
+            "type" : "string"
+          },
+          "shortName" : {
+            "type" : "string"
+          }
+        }
+      },
+      "governmentIDs" : {
+        "type" : "object",
+        "properties" : {
+          "idValue" : {
+            "type" : "string"
+          },
+          "nameCode" : {
+            "$ref" : "#/components/schemas/nameCode"
+          }
+        }
+      },
+      "legalName" : {
+        "type" : "object",
+        "properties" : {
+          "givenName" : {
+            "type" : "string"
+          },
+          "familyName1" : {
+            "type" : "string"
+          }
+        }
+      },
+      "countrySubdivisionLevel1" : {
+        "type" : "object",
+        "properties" : {
+          "codeValue" : {
+            "type" : "string"
+          },
+          "subdivisionType" : {
+            "type" : "string"
+          }
+        }
+      },
+      "legalAddress" : {
+        "type" : "object",
+        "properties" : {
+          "lineOne" : {
+            "type" : "string"
+          },
+          "lineTwo" : {
+            "type" : "string"
+          },
+          "cityName" : {
+            "type" : "string"
+          },
+          "countryCode" : {
+            "type" : "string"
+          },
+          "postalCode" : {
+            "type" : "string"
+          },
+          "countrySubdivisionLevel1" : {
+            "$ref" : "#/components/schemas/countrySubdivisionLevel1"
+          }
+        }
+      },
+      "communication" : {
+        "type" : "object"
+      },
+      "person" : {
+        "type" : "object",
+        "properties" : {
+          "birthDate" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "genderCode" : {
+            "$ref" : "#/components/schemas/genderCode"
+          },
+          "governmentIDs" : {
+            "$ref" : "#/components/schemas/governmentIDs"
+          },
+          "legalName" : {
+            "$ref" : "#/components/schemas/legalName"
+          },
+          "legalAddress" : {
+            "$ref" : "#/components/schemas/legalAddress"
+          },
+          "communication" : {
+            "$ref" : "#/components/schemas/communication"
+          }
+        }
+      },
+      "workerDates" : {
+        "type" : "object",
+        "properties" : {
+          "adjustedServiceDate" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "originalHireDate" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }
+      },
+      "statusCode" : {
+        "type" : "object",
+        "properties" : {
+          "codeValue" : {
+            "type" : "string"
+          },
+          "shortName" : {
+            "type" : "string"
+          }
+        }
+      },
+      "workerStatus" : {
+        "type" : "object",
+        "properties" : {
+          "statusCode" : {
+            "$ref" : "#/components/schemas/statusCode"
+          }
+        }
+      },
+      "businessCommunication" : {
+        "type" : "object"
+      },
+      "indicatorFields" : {
+        "type" : "object",
+        "properties" : {
+          "indicatorValue" : {
+            "type" : "boolean"
+          },
+          "nameCode" : {
+            "$ref" : "#/components/schemas/codeValueShortName"
+          }
+        }
+      },
+      "customFieldGroup" : {
+        "type" : "object",
+        "properties" : {
+          "indicatorFields" : {
+            "$ref" : "#/components/schemas/indicatorFields"
+          }
+        }
+      },
+      "address" : {
+        "type" : "object",
+        "properties" : {
+          "nameCode" : {
+            "type" : "string"
+          },
+          "lineOne" : {
+            "type" : "string"
+          },
+          "lineTwo" : {
+            "type" : "string"
+          },
+          "cityName" : {
+            "type" : "string"
+          },
+          "countryCode" : {
+            "type" : "string"
+          },
+          "postalCode" : {
+            "type" : "string"
+          },
+          "countrySubdivisionLevel1" : {
+            "$ref" : "#/components/schemas/countrySubdivisionLevel1"
+          }
+        }
+      },
+      "assignedWorkLocations" : {
+        "type" : "object",
+        "properties" : {
+          "address" : {
+            "$ref" : "#/components/schemas/address"
+          }
+        }
+      },
+      "additionalRemunerations" : {
+        "type" : "object"
+      },
+      "hourlyRateAmount" : {
+        "type" : "object",
+        "properties" : {
+          "amountValue" : {
+            "type" : "string"
+          },
+          "currencyCode" : {
+            "type" : "string"
+          },
+          "nameCode" : {
+            "$ref" : "#/components/schemas/codeValueShortName"
+          }
+        }
+      },
+      "baseRemuneration" : {
+        "type" : "object",
+        "properties" : {
+          "hourlyRateAmount" : {
+            "$ref" : "#/components/schemas/hourlyRateAmount"
+          }
+        }
+      },
+      "standardPayPeriodHours" : {
+        "type" : "object",
+        "properties" : {
+          "hoursQuantity" : {
+            "type" : "string"
+          }
+        }
+      },
+      "workAssignments" : {
+        "type" : "object",
+        "properties" : {
+          "primaryIndicator" : {
+            "type" : "boolean"
+          },
+          "workerTypeCode" : {
+            "$ref" : "#/components/schemas/codeValueShortName"
+          },
+          "workLevelCode" : {
+            "$ref" : "#/components/schemas/codeValueShortName"
+          },
+          "remunerationBasisCode" : {
+            "$ref" : "#/components/schemas/codeValueShortName"
+          },
+          "payCycleCode" : {
+            "$ref" : "#/components/schemas/codeValueShortName"
+          },
+          "standardPayPeriodHours" : {
+            "$ref" : "#/components/schemas/standardPayPeriodHours"
+          },
+          "baseRemuneration" : {
+            "$ref" : "#/components/schemas/baseRemuneration"
+          },
+          "additionalRemunerations" : {
+            "$ref" : "#/components/schemas/additionalRemunerations"
+          },
+          "assignedWorkLocations" : {
+            "$ref" : "#/components/schemas/assignedWorkLocations"
+          }
+        }
+      },
+      "workers" : {
+        "type" : "object",
+        "properties" : {
+          "associateOID" : {
+            "type" : "string"
+          },
+          "workerID" : {
+            "$ref" : "#/components/schemas/workerID"
+          },
+          "person" : {
+            "$ref" : "#/components/schemas/person"
+          },
+          "workerDates" : {
+            "$ref" : "#/components/schemas/workerDates"
+          },
+          "workerStatus" : {
+            "$ref" : "#/components/schemas/workerStatus"
+          },
+          "businessCommunication" : {
+            "$ref" : "#/components/schemas/businessCommunication"
+          },
+          "customFieldGroup" : {
+            "$ref" : "#/components/schemas/customFieldGroup"
+          },
+          "workAssignments" : {
+            "$ref" : "#/components/schemas/workAssignments"
+          }
+        }
+      }
+    }
+  }
 }

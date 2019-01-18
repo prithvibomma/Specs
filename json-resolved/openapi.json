@@ -12,15 +12,11 @@
   "servers" : [ {
     "url" : "http://adpmobile.esi.adp.com"
   } ],
-  "tags" : [ {
-    "name" : "Workers",
-    "description" : "List All Workers"
-  } ],
   "paths" : {
     "/hr/v2/workers/" : {
       "get" : {
         "tags" : [ "Workers" ],
-        "summary" : "Workers",
+        "summary" : "Get All Workers",
         "description" : "Request the list of all available workers that the requester is authorized to view",
         "operationId" : "2aa32939-9059-4187-8785-0eb593ece43b",
         "parameters" : [ {
@@ -120,7 +116,7 @@
     "/hr/v2/workers/{aoid}" : {
       "get" : {
         "tags" : [ "Workers" ],
-        "summary" : "Workers",
+        "summary" : "Get A Worker",
         "description" : "Returns a Worker",
         "parameters" : [ {
           "name" : "orgoid",

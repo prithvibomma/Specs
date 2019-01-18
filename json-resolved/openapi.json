@@ -2,7 +2,7 @@
   "openapi" : "3.0.0",
   "info" : {
     "title" : "Employee API",
-    "description" : "**View/Edit Employee Details**",
+    "description" : "**View and Add Employee Details**",
     "contact" : {
       "name" : "ADP Marketplace API support",
       "url" : "http://__/",

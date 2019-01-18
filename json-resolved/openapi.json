@@ -55,6 +55,58 @@
                 "examples" : { }
               }
             }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "headers" : {
+              "Content-Type" : {
+                "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "headers" : {
+              "Content-Type" : {
+                "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "headers" : {
+              "Content-Type" : {
+                "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "202" : {
+            "description" : "Accepted",
+            "headers" : {
+              "Content-Type" : {
+                "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
           }
         },
         "servers" : [ {
@@ -65,11 +117,11 @@
         "url" : "http://adpmobile.esi.adp.com"
       } ]
     },
-    "/hr/v2/workers/897949651" : {
+    "/hr/v2/workers/{aoid}" : {
       "get" : {
         "tags" : [ "Workers" ],
         "summary" : "Workers",
-        "description" : "Auto generated using Swagger Inspector",
+        "description" : "Returns a Worker",
         "parameters" : [ {
           "name" : "orgoid",
           "in" : "header",
@@ -90,6 +142,15 @@
             "type" : "string"
           },
           "example" : "8979496530114"
+        }, {
+          "name" : "aoid",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
         } ],
         "responses" : {
           "200" : {
@@ -97,9 +158,61 @@
             "content" : {
               "application/json; charset=utf-8" : {
                 "schema" : {
-                  "type" : "string"
+                  "$ref" : "#/components/schemas/workers"
                 },
                 "examples" : { }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "headers" : {
+              "Content-Type" : {
+                "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "headers" : {
+              "Content-Type" : {
+                "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "headers" : {
+              "Content-Type" : {
+                "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "202" : {
+            "description" : "Accepted",
+            "headers" : {
+              "Content-Type" : {
+                "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                }
               }
             }
           }

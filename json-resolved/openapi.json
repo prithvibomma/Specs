@@ -12,9 +12,15 @@
   "servers" : [ {
     "url" : "http://adpmobile.esi.adp.com"
   } ],
+  "tags" : [ {
+    "name" : "Workers",
+    "description" : "List All Workers"
+  } ],
   "paths" : {
     "/hr/v2/workers/" : {
       "get" : {
+        "tags" : [ "Workers" ],
+        "description" : "Request the list of all available workers that the requester is authorized to view",
         "operationId" : "2aa32939-9059-4187-8785-0eb593ece43b",
         "parameters" : [ {
           "name" : "orgoid",
@@ -39,7 +45,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Auto generated using Swagger Inspector",
+            "description" : "Returns",
             "content" : {
               "application/json; charset=utf-8" : {
                 "schema" : {
@@ -60,6 +66,7 @@
     },
     "/hr/v2/workers/897949651" : {
       "get" : {
+        "tags" : [ "Workers" ],
         "description" : "Auto generated using Swagger Inspector",
         "parameters" : [ {
           "name" : "orgoid",

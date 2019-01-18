@@ -11,9 +11,6 @@
     "version" : "1.0.0"
   },
   "servers" : [ {
-    "url" : "https://virtserver.swaggerhub.com/prithvibomma/MyAPI/1.0.0",
-    "description" : "SwaggerHub API Auto Mocking"
-  }, {
     "url" : "http://_host_/",
     "description" : "Production Url"
   }, {

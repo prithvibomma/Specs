@@ -121,7 +121,7 @@
           "name" : "$filter",
           "in" : "query",
           "description" : "To Apply any filters on the data\n* $filter=/City eq HYD\n* $filter=/Name eq Smith",
-          "required" : true,
+          "required" : false,
           "style" : "form",
           "explode" : true,
           "schema" : {

@@ -1,549 +1,163 @@
-{
-  "openapi" : "3.0.1",
-  "info" : {
-    "title" : "Workers",
-    "description" : "The Workers APIs support the management of workers in an organization. A worker is a person who performs duties and responsibilities for an organization. In that capacity, a worker fills one or more positions via a work assignment. For a given work assignment, a worker is related to the organization as an employee or contractor. The Workers APIs can be used to obtain a list of all workers in an organization and to get information about work assignments.",
-    "contact" : {
-      "name" : "Wendy Dodds",
-      "email" : "Wendy.L.Dodds@adp.com"
-    },
-    "version" : "0.1"
-  },
-  "servers" : [ {
-    "url" : "http://adpmobile.esi.adp.com"
-  } ],
-  "paths" : {
-    "/hr/v2/workers/" : {
-      "get" : {
-        "tags" : [ "Workers" ],
-        "summary" : "Get All Workers",
-        "description" : "Request the list of all available workers that the requester is authorized to view",
-        "operationId" : "2aa32939-9059-4187-8785-0eb593ece43b",
-        "parameters" : [ {
-          "name" : "orgoid",
-          "in" : "header",
-          "required" : false,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "example" : "8979496589794965"
-        }, {
-          "name" : "associateoid",
-          "in" : "header",
-          "required" : false,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "example" : "8979496530114"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Returns all the available workers that the requester is authorized to view",
-            "content" : {
-              "application/json; charset=utf-8" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/workers"
-                },
-                "examples" : { }
-              }
-            }
-          },
-          "404" : {
-            "description" : "Not Found",
-            "headers" : {
-              "Content-Type" : {
-                "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
-                "style" : "simple",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                }
-              }
-            }
-          },
-          "401" : {
-            "description" : "Unauthorized",
-            "headers" : {
-              "Content-Type" : {
-                "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
-                "style" : "simple",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                }
-              }
-            }
-          },
-          "500" : {
-            "description" : "Internal Server Error",
-            "headers" : {
-              "Content-Type" : {
-                "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
-                "style" : "simple",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                }
-              }
-            }
-          },
-          "202" : {
-            "description" : "Accepted",
-            "headers" : {
-              "Content-Type" : {
-                "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
-                "style" : "simple",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                }
-              }
-            }
-          }
-        },
-        "servers" : [ {
-          "url" : "http://adpmobile.esi.adp.com"
-        } ]
-      },
-      "servers" : [ {
-        "url" : "http://adpmobile.esi.adp.com"
-      } ]
-    },
-    "/hr/v2/workers/{aoid}" : {
-      "get" : {
-        "tags" : [ "Workers" ],
-        "summary" : "Get A Worker",
-        "description" : "Returns a Worker",
-        "parameters" : [ {
-          "name" : "orgoid",
-          "in" : "header",
-          "required" : false,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "example" : "8979496589794965"
-        }, {
-          "name" : "associateoid",
-          "in" : "header",
-          "required" : false,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "example" : "8979496530114"
-        }, {
-          "name" : "aoid",
-          "in" : "path",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Returns all the available workers that the requester is authorized to view",
-            "content" : {
-              "application/json; charset=utf-8" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/workers"
-                },
-                "examples" : { }
-              }
-            }
-          },
-          "404" : {
-            "description" : "Not Found",
-            "headers" : {
-              "Content-Type" : {
-                "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
-                "style" : "simple",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                }
-              }
-            }
-          },
-          "401" : {
-            "description" : "Unauthorized",
-            "headers" : {
-              "Content-Type" : {
-                "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
-                "style" : "simple",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                }
-              }
-            }
-          },
-          "500" : {
-            "description" : "Internal Server Error",
-            "headers" : {
-              "Content-Type" : {
-                "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
-                "style" : "simple",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                }
-              }
-            }
-          },
-          "202" : {
-            "description" : "Accepted",
-            "headers" : {
-              "Content-Type" : {
-                "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
-                "style" : "simple",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                }
-              }
-            }
-          }
-        },
-        "servers" : [ {
-          "url" : "http://adpmobile.esi.adp.com"
-        } ]
-      },
-      "servers" : [ {
-        "url" : "http://adpmobile.esi.adp.com"
-      } ]
-    }
-  },
-  "components" : {
-    "schemas" : {
-      "codeValueShortName" : {
-        "type" : "object",
-        "properties" : {
-          "codeValue" : {
-            "type" : "string"
-          },
-          "shortName" : {
-            "type" : "string"
-          }
-        }
-      },
-      "schemecode" : {
-        "type" : "object",
-        "properties" : {
-          "shortname" : {
-            "type" : "string"
-          }
-        }
-      },
-      "workerID" : {
-        "type" : "object",
-        "properties" : {
-          "idValue" : {
-            "type" : "string"
-          },
-          "schemeCode" : {
-            "$ref" : "#/components/schemas/schemecode"
-          }
-        }
-      },
-      "genderCode" : {
-        "type" : "object",
-        "properties" : {
-          "codeValue" : {
-            "type" : "string"
-          },
-          "shortname" : {
-            "type" : "string"
-          },
-          "longname" : {
-            "type" : "string"
-          }
-        }
-      },
-      "nameCode" : {
-        "type" : "object",
-        "properties" : {
-          "codeValues" : {
-            "type" : "string"
-          },
-          "shortName" : {
-            "type" : "string"
-          }
-        }
-      },
-      "governmentIDs" : {
-        "type" : "object",
-        "properties" : {
-          "idValue" : {
-            "type" : "string"
-          },
-          "nameCode" : {
-            "$ref" : "#/components/schemas/nameCode"
-          }
-        }
-      },
-      "legalName" : {
-        "type" : "object",
-        "properties" : {
-          "givenName" : {
-            "type" : "string"
-          },
-          "familyName1" : {
-            "type" : "string"
-          }
-        }
-      },
-      "countrySubdivisionLevel1" : {
-        "type" : "object",
-        "properties" : {
-          "codeValue" : {
-            "type" : "string"
-          },
-          "subdivisionType" : {
-            "type" : "string"
-          }
-        }
-      },
-      "legalAddress" : {
-        "type" : "object",
-        "properties" : {
-          "lineOne" : {
-            "type" : "string"
-          },
-          "lineTwo" : {
-            "type" : "string"
-          },
-          "cityName" : {
-            "type" : "string"
-          },
-          "countryCode" : {
-            "type" : "string"
-          },
-          "postalCode" : {
-            "type" : "string"
-          },
-          "countrySubdivisionLevel1" : {
-            "$ref" : "#/components/schemas/countrySubdivisionLevel1"
-          }
-        }
-      },
-      "communication" : {
-        "type" : "object"
-      },
-      "person" : {
-        "type" : "object",
-        "properties" : {
-          "birthDate" : {
-            "type" : "string",
-            "format" : "date"
-          },
-          "genderCode" : {
-            "$ref" : "#/components/schemas/genderCode"
-          },
-          "governmentIDs" : {
-            "$ref" : "#/components/schemas/governmentIDs"
-          },
-          "legalName" : {
-            "$ref" : "#/components/schemas/legalName"
-          },
-          "legalAddress" : {
-            "$ref" : "#/components/schemas/legalAddress"
-          },
-          "communication" : {
-            "$ref" : "#/components/schemas/communication"
-          }
-        }
-      },
-      "workerDates" : {
-        "type" : "object",
-        "properties" : {
-          "adjustedServiceDate" : {
-            "type" : "string",
-            "format" : "date"
-          },
-          "originalHireDate" : {
-            "type" : "string",
-            "format" : "date"
-          }
-        }
-      },
-      "statusCode" : {
-        "type" : "object",
-        "properties" : {
-          "codeValue" : {
-            "type" : "string"
-          },
-          "shortName" : {
-            "type" : "string"
-          }
-        }
-      },
-      "workerStatus" : {
-        "type" : "object",
-        "properties" : {
-          "statusCode" : {
-            "$ref" : "#/components/schemas/statusCode"
-          }
-        }
-      },
-      "businessCommunication" : {
-        "type" : "object"
-      },
-      "indicatorFields" : {
-        "type" : "object",
-        "properties" : {
-          "indicatorValue" : {
-            "type" : "boolean"
-          },
-          "nameCode" : {
-            "$ref" : "#/components/schemas/codeValueShortName"
-          }
-        }
-      },
-      "customFieldGroup" : {
-        "type" : "object",
-        "properties" : {
-          "indicatorFields" : {
-            "$ref" : "#/components/schemas/indicatorFields"
-          }
-        }
-      },
-      "address" : {
-        "type" : "object",
-        "properties" : {
-          "nameCode" : {
-            "type" : "string"
-          },
-          "lineOne" : {
-            "type" : "string"
-          },
-          "lineTwo" : {
-            "type" : "string"
-          },
-          "cityName" : {
-            "type" : "string"
-          },
-          "countryCode" : {
-            "type" : "string"
-          },
-          "postalCode" : {
-            "type" : "string"
-          },
-          "countrySubdivisionLevel1" : {
-            "$ref" : "#/components/schemas/countrySubdivisionLevel1"
-          }
-        }
-      },
-      "assignedWorkLocations" : {
-        "type" : "object",
-        "properties" : {
-          "address" : {
-            "$ref" : "#/components/schemas/address"
-          }
-        }
-      },
-      "additionalRemunerations" : {
-        "type" : "object"
-      },
-      "hourlyRateAmount" : {
-        "type" : "object",
-        "properties" : {
-          "amountValue" : {
-            "type" : "string"
-          },
-          "currencyCode" : {
-            "type" : "string"
-          },
-          "nameCode" : {
-            "$ref" : "#/components/schemas/codeValueShortName"
-          }
-        }
-      },
-      "baseRemuneration" : {
-        "type" : "object",
-        "properties" : {
-          "hourlyRateAmount" : {
-            "$ref" : "#/components/schemas/hourlyRateAmount"
-          }
-        }
-      },
-      "standardPayPeriodHours" : {
-        "type" : "object",
-        "properties" : {
-          "hoursQuantity" : {
-            "type" : "string"
-          }
-        }
-      },
-      "workAssignments" : {
-        "type" : "object",
-        "properties" : {
-          "primaryIndicator" : {
-            "type" : "boolean"
-          },
-          "workerTypeCode" : {
-            "$ref" : "#/components/schemas/codeValueShortName"
-          },
-          "workLevelCode" : {
-            "$ref" : "#/components/schemas/codeValueShortName"
-          },
-          "remunerationBasisCode" : {
-            "$ref" : "#/components/schemas/codeValueShortName"
-          },
-          "payCycleCode" : {
-            "$ref" : "#/components/schemas/codeValueShortName"
-          },
-          "standardPayPeriodHours" : {
-            "$ref" : "#/components/schemas/standardPayPeriodHours"
-          },
-          "baseRemuneration" : {
-            "$ref" : "#/components/schemas/baseRemuneration"
-          },
-          "additionalRemunerations" : {
-            "$ref" : "#/components/schemas/additionalRemunerations"
-          },
-          "assignedWorkLocations" : {
-            "$ref" : "#/components/schemas/assignedWorkLocations"
-          }
-        }
-      },
-      "workers" : {
-        "type" : "object",
-        "properties" : {
-          "associateOID" : {
-            "type" : "string"
-          },
-          "workerID" : {
-            "$ref" : "#/components/schemas/workerID"
-          },
-          "person" : {
-            "$ref" : "#/components/schemas/person"
-          },
-          "workerDates" : {
-            "$ref" : "#/components/schemas/workerDates"
-          },
-          "workerStatus" : {
-            "$ref" : "#/components/schemas/workerStatus"
-          },
-          "businessCommunication" : {
-            "$ref" : "#/components/schemas/businessCommunication"
-          },
-          "customFieldGroup" : {
-            "$ref" : "#/components/schemas/customFieldGroup"
-          },
-          "workAssignments" : {
-            "$ref" : "#/components/schemas/workAssignments"
-          }
-        }
-      }
-    }
-  }
-}
+openapi: 3.0.0
+info:
+  version: '1.0.0'
+  title: 'Employee API'
+  description: '**View and Add Employee Details**'
+  contact:
+    name: ADP Marketplace API support
+    email: adpapisupport@adp.com
+    url: http://__/
+
+servers:
+  - description: Production Url
+    url: http://_host_/
+  - description: Test Url
+    url: http://_host2_/
+components:
+  schemas:
+    employee:
+      type: object
+      properties: 
+        ID:
+          type: number
+          minimum: 1001
+          default: 1001
+        Name:
+          type: string
+        City:
+          type: string
+        DoB:
+          type: string
+          format: date
+paths:
+  /employee/{employeeid}:
+    get:
+      tags: 
+        - Get Employee Data
+      description: Get Employee details of an Employee
+      summary: This returns Employee details based on EmployeeID
+      parameters: 
+        - name: employeeid
+          in: path
+          required: true
+          description: ID of the Employee
+          schema: 
+            type: integer
+            default: 1001
+            example: 2001
+
+      responses:
+        '200':
+          description: Successfull Response
+          content:
+            application/json: 
+              schema:
+                $ref: '#/components/schemas/employee'
+        '400':
+          description: Bad Request
+          headers:
+            Content-Type: 
+              description: Content-Type of the response
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'error': 'bad request', 'error_code': '1000'}
+
+        '404':
+          description: Not found
+          headers:
+            Content-Type: 
+              description: Content-Type of the response
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'error': 'Not Found', 'error_code': '1002'}
+  
+  /employee:
+    get:
+      tags: 
+        - Get All Employees
+      description: Get Employee details of all Employees
+      summary: This returns all Employees details 
+      parameters: 
+        - name: employeeid
+          in: path
+          required: true
+          description: ID of the Employee
+          schema: 
+            type: integer
+            default: 1001
+            example: 2001
+        - name: $filter
+          in: query
+          required: false
+          description: "To Apply any filters on the data\n* $filter=/City eq HYD\n* $filter=/Name eq Smith" 
+          schema: 
+            type: integer
+            default: 1001
+            example: 2001
+            
+      responses:
+        '200':
+          description: Successfull Response
+          content:
+            application/json: 
+              schema: 
+                $ref: '#/components/schemas/employee'
+        '400':
+          description: Bad Request
+          headers:
+            Content-Type: 
+              description: Content-Type of the response
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'error': 'bad request', 'error_code': '1000'}
+
+        '404':
+          description: Not found
+          headers:
+            Content-Type: 
+              description: Content-Type of the response
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'error': 'Not Found', 'error_code': '1002'}
+  /employee/post:  
+    post:
+      tags: 
+        - Add Employee Data
+      description: Adds Employee Data to the Database
+      summary: Add a new Employee
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/employee'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/employee'
+          text/plain:
+            schema:
+              type: string    
+      
+      responses:
+        '201':
+          description: Employee Created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorised

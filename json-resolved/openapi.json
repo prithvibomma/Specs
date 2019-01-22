@@ -47,13 +47,12 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/workers"
-                },
-                "examples" : { }
+                }
               }
             }
           },
-          "404" : {
-            "description" : "Not Found",
+          "202" : {
+            "description" : "Accepted",
             "headers" : {
               "Content-Type" : {
                 "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
@@ -76,10 +75,17 @@
                   "type" : "string"
                 }
               }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "https://confluence.es.ad.adp.com/download/attachments/825624468/Errors.json"
+                }
+              }
             }
           },
-          "500" : {
-            "description" : "Internal Server Error",
+          "404" : {
+            "description" : "Not Found",
             "headers" : {
               "Content-Type" : {
                 "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
@@ -91,8 +97,8 @@
               }
             }
           },
-          "202" : {
-            "description" : "Accepted",
+          "500" : {
+            "description" : "Internal Server Error",
             "headers" : {
               "Content-Type" : {
                 "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
@@ -155,13 +161,12 @@
               "application/json; charset=utf-8" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/workers"
-                },
-                "examples" : { }
+                }
               }
             }
           },
-          "404" : {
-            "description" : "Not Found",
+          "202" : {
+            "description" : "Accepted",
             "headers" : {
               "Content-Type" : {
                 "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
@@ -186,8 +191,8 @@
               }
             }
           },
-          "500" : {
-            "description" : "Internal Server Error",
+          "404" : {
+            "description" : "Not Found",
             "headers" : {
               "Content-Type" : {
                 "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
@@ -197,10 +202,17 @@
                   "type" : "string"
                 }
               }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "https://confluence.es.ad.adp.com/download/attachments/825624468/Errors.json"
+                }
+              }
             }
           },
-          "202" : {
-            "description" : "Accepted",
+          "500" : {
+            "description" : "Internal Server Error",
             "headers" : {
               "Content-Type" : {
                 "description" : "Content-Type' ': ' type '/' subtype. Describes the media type and subtype of an entity-body.",
@@ -239,7 +251,8 @@
         "type" : "object",
         "properties" : {
           "shortname" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Company level Identifier of the employee in RUN"
           }
         }
       },
@@ -247,7 +260,8 @@
         "type" : "object",
         "properties" : {
           "idValue" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Company level Identifier of the employee in RUN"
           },
           "schemeCode" : {
             "$ref" : "#/components/schemas/schemecode"
@@ -258,7 +272,9 @@
         "type" : "object",
         "properties" : {
           "codeValue" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The code for the related entity.",
+            "enum" : [ "F -Female", "M -Male" ]
           },
           "shortname" : {
             "type" : "string"
@@ -272,10 +288,13 @@
         "type" : "object",
         "properties" : {
           "codeValues" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The code for the related entity.",
+            "enum" : [ "SSN" ]
           },
           "shortName" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Short description of the related code not to exceed 25 characters"
           }
         }
       },
@@ -283,7 +302,8 @@
         "type" : "object",
         "properties" : {
           "idValue" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "An actual ID"
           },
           "nameCode" : {
             "$ref" : "#/components/schemas/nameCode"
@@ -294,10 +314,12 @@
         "type" : "object",
         "properties" : {
           "givenName" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The first name of the person"
           },
           "familyName1" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Person family name 1"
           }
         }
       },
@@ -305,10 +327,12 @@
         "type" : "object",
         "properties" : {
           "codeValue" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The code for the related entity."
           },
           "subdivisionType" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The type of city sub division, e.g. borough, neighborhood"
           }
         }
       },
@@ -316,19 +340,24 @@
         "type" : "object",
         "properties" : {
           "lineOne" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Line One of Street Address Information"
           },
           "lineTwo" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Line Two of Street Address Information"
           },
           "cityName" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "A city in the context of an address"
           },
           "countryCode" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The 2 character country code. As per ISO 3166-1 Alpha 2"
           },
           "postalCode" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The string of characters used to identify the postal code"
           },
           "countrySubdivisionLevel1" : {
             "$ref" : "#/components/schemas/countrySubdivisionLevel1"
@@ -336,13 +365,43 @@
         }
       },
       "communication" : {
-        "type" : "object"
+        "type" : "object",
+        "properties" : {
+          "landlines" : {
+            "type" : "object",
+            "properties" : {
+              "dialNumber" : {
+                "type" : "string",
+                "description" : "The local communication number, not including country dialing or area dialing codes. If component parts of the telephone number are being communicated then"
+              }
+            }
+          },
+          "mobiles" : {
+            "type" : "string",
+            "properties" : {
+              "dialNumber" : {
+                "type" : "string",
+                "description" : "The local communication number, not including country dialing or area dialing codes. If component parts of the telephone number are being communicated then"
+              }
+            }
+          },
+          "emails" : {
+            "type" : "string",
+            "properties" : {
+              "emailUri" : {
+                "type" : "string",
+                "description" : "The local communication number, not including country dialing or area dialing codes. If component parts of the telephone number are being communicated then"
+              }
+            }
+          }
+        }
       },
       "person" : {
         "type" : "object",
         "properties" : {
           "birthDate" : {
             "type" : "string",
+            "description" : "The birth date of the person. Follows the ISO-8601:2000 format",
             "format" : "date"
           },
           "genderCode" : {
@@ -367,10 +426,12 @@
         "properties" : {
           "adjustedServiceDate" : {
             "type" : "string",
+            "description" : "A date related to the length of time a worker works in a given work assignment which usually factors into eligibility for various types of benefits. It is generally adjusted for workers that leave the organization and are later rehired. Follows the ISO-8601:2000 format",
             "format" : "date"
           },
           "originalHireDate" : {
             "type" : "string",
+            "description" : "The date the worker is first hired into an organization. Follows the ISO-8601:2000 format",
             "format" : "date"
           }
         }
@@ -379,12 +440,15 @@
         "type" : "object",
         "properties" : {
           "codeValue" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The code for the related entity"
           },
           "shortName" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Short description of the related code"
           }
-        }
+        },
+        "description" : "The status of the associated  government ID"
       },
       "workerStatus" : {
         "type" : "object",
@@ -432,7 +496,8 @@
             "type" : "string"
           },
           "countryCode" : {
-            "type" : "string"
+            "type" : "string",
+            "enum" : [ "US" ]
           },
           "postalCode" : {
             "type" : "string"
@@ -519,7 +584,8 @@
         "type" : "object",
         "properties" : {
           "associateOID" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "A unique identifier of an associate"
           },
           "workerID" : {
             "$ref" : "#/components/schemas/workerID"

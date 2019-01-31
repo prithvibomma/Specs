@@ -46,7 +46,12 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/workers"
+                  "type" : "object",
+                  "properties" : {
+                    "workers" : {
+                      "$ref" : "#/components/schemas/workers"
+                    }
+                  }
                 }
               }
             }
@@ -158,7 +163,7 @@
           "200" : {
             "description" : "Returns all the available workers that the requester is authorized to view",
             "content" : {
-              "application/json; charset=utf-8" : {
+              "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/workers"
                 }
@@ -250,9 +255,8 @@
       "schemecode" : {
         "type" : "object",
         "properties" : {
-          "shortname" : {
-            "type" : "string",
-            "description" : "Company level Identifier of the employee in RUN"
+          "shortName" : {
+            "type" : "string"
           }
         }
       },
@@ -260,8 +264,7 @@
         "type" : "object",
         "properties" : {
           "idValue" : {
-            "type" : "string",
-            "description" : "Company level Identifier of the employee in RUN"
+            "type" : "string"
           },
           "schemeCode" : {
             "$ref" : "#/components/schemas/schemecode"
@@ -272,14 +275,12 @@
         "type" : "object",
         "properties" : {
           "codeValue" : {
-            "type" : "string",
-            "description" : "The code for the related entity.",
-            "enum" : [ "F -Female", "M -Male" ]
-          },
-          "shortname" : {
             "type" : "string"
           },
-          "longname" : {
+          "shortName" : {
+            "type" : "string"
+          },
+          "longName" : {
             "type" : "string"
           }
         }
@@ -287,14 +288,11 @@
       "nameCode" : {
         "type" : "object",
         "properties" : {
-          "codeValues" : {
-            "type" : "string",
-            "description" : "The code for the related entity.",
-            "enum" : [ "SSN" ]
+          "codeValue" : {
+            "type" : "string"
           },
           "shortName" : {
-            "type" : "string",
-            "description" : "Short description of the related code not to exceed 25 characters"
+            "type" : "string"
           }
         }
       },
@@ -302,11 +300,14 @@
         "type" : "object",
         "properties" : {
           "idValue" : {
-            "type" : "string",
-            "description" : "An actual ID"
+            "type" : "string"
           },
           "nameCode" : {
             "$ref" : "#/components/schemas/nameCode"
+          },
+          "countryCode" : {
+            "type" : "string",
+            "enum" : [ "US" ]
           }
         }
       },
@@ -314,12 +315,13 @@
         "type" : "object",
         "properties" : {
           "givenName" : {
-            "type" : "string",
-            "description" : "The first name of the person"
+            "type" : "string"
           },
           "familyName1" : {
-            "type" : "string",
-            "description" : "Person family name 1"
+            "type" : "string"
+          },
+          "middleName" : {
+            "type" : "string"
           }
         }
       },
@@ -327,165 +329,16 @@
         "type" : "object",
         "properties" : {
           "codeValue" : {
-            "type" : "string",
-            "description" : "The code for the related entity."
+            "type" : "string"
           },
           "subdivisionType" : {
-            "type" : "string",
-            "description" : "The type of city sub division, e.g. borough, neighborhood"
+            "type" : "string"
           }
         }
       },
       "legalAddress" : {
         "type" : "object",
         "properties" : {
-          "lineOne" : {
-            "type" : "string",
-            "description" : "Line One of Street Address Information"
-          },
-          "lineTwo" : {
-            "type" : "string",
-            "description" : "Line Two of Street Address Information"
-          },
-          "cityName" : {
-            "type" : "string",
-            "description" : "A city in the context of an address"
-          },
-          "countryCode" : {
-            "type" : "string",
-            "description" : "The 2 character country code. As per ISO 3166-1 Alpha 2"
-          },
-          "postalCode" : {
-            "type" : "string",
-            "description" : "The string of characters used to identify the postal code"
-          },
-          "countrySubdivisionLevel1" : {
-            "$ref" : "#/components/schemas/countrySubdivisionLevel1"
-          }
-        }
-      },
-      "communication" : {
-        "type" : "object",
-        "properties" : {
-          "landlines" : {
-            "type" : "object",
-            "properties" : {
-              "dialNumber" : {
-                "type" : "string",
-                "description" : "The local communication number, not including country dialing or area dialing codes. If component parts of the telephone number are being communicated then"
-              }
-            }
-          },
-          "mobiles" : {
-            "type" : "string",
-            "properties" : {
-              "dialNumber" : {
-                "type" : "string",
-                "description" : "The local communication number, not including country dialing or area dialing codes. If component parts of the telephone number are being communicated then"
-              }
-            }
-          },
-          "emails" : {
-            "type" : "string",
-            "properties" : {
-              "emailUri" : {
-                "type" : "string",
-                "description" : "The local communication number, not including country dialing or area dialing codes. If component parts of the telephone number are being communicated then"
-              }
-            }
-          }
-        }
-      },
-      "person" : {
-        "type" : "object",
-        "properties" : {
-          "birthDate" : {
-            "type" : "string",
-            "description" : "The birth date of the person. Follows the ISO-8601:2000 format",
-            "format" : "date"
-          },
-          "genderCode" : {
-            "$ref" : "#/components/schemas/genderCode"
-          },
-          "governmentIDs" : {
-            "$ref" : "#/components/schemas/governmentIDs"
-          },
-          "legalName" : {
-            "$ref" : "#/components/schemas/legalName"
-          },
-          "legalAddress" : {
-            "$ref" : "#/components/schemas/legalAddress"
-          },
-          "communication" : {
-            "$ref" : "#/components/schemas/communication"
-          }
-        }
-      },
-      "workerDates" : {
-        "type" : "object",
-        "properties" : {
-          "adjustedServiceDate" : {
-            "type" : "string",
-            "description" : "A date related to the length of time a worker works in a given work assignment which usually factors into eligibility for various types of benefits. It is generally adjusted for workers that leave the organization and are later rehired. Follows the ISO-8601:2000 format",
-            "format" : "date"
-          },
-          "originalHireDate" : {
-            "type" : "string",
-            "description" : "The date the worker is first hired into an organization. Follows the ISO-8601:2000 format",
-            "format" : "date"
-          }
-        }
-      },
-      "statusCode" : {
-        "type" : "object",
-        "properties" : {
-          "codeValue" : {
-            "type" : "string",
-            "description" : "The code for the related entity"
-          },
-          "shortName" : {
-            "type" : "string",
-            "description" : "Short description of the related code"
-          }
-        },
-        "description" : "The status of the associated  government ID"
-      },
-      "workerStatus" : {
-        "type" : "object",
-        "properties" : {
-          "statusCode" : {
-            "$ref" : "#/components/schemas/statusCode"
-          }
-        }
-      },
-      "businessCommunication" : {
-        "type" : "object"
-      },
-      "indicatorFields" : {
-        "type" : "object",
-        "properties" : {
-          "indicatorValue" : {
-            "type" : "boolean"
-          },
-          "nameCode" : {
-            "$ref" : "#/components/schemas/codeValueShortName"
-          }
-        }
-      },
-      "customFieldGroup" : {
-        "type" : "object",
-        "properties" : {
-          "indicatorFields" : {
-            "$ref" : "#/components/schemas/indicatorFields"
-          }
-        }
-      },
-      "address" : {
-        "type" : "object",
-        "properties" : {
-          "nameCode" : {
-            "type" : "string"
-          },
           "lineOne" : {
             "type" : "string"
           },
@@ -507,22 +360,281 @@
           }
         }
       },
-      "assignedWorkLocations" : {
+      "communication" : {
         "type" : "object",
         "properties" : {
-          "address" : {
-            "$ref" : "#/components/schemas/address"
+          "emails" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "emailUri" : {
+                  "type" : "string",
+                  "format" : "email"
+                },
+                "nameCode" : {
+                  "type" : "object",
+                  "properties" : {
+                    "codeValue" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "landLines" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "dialNumber" : {
+                  "type" : "string"
+                },
+                "nameCode" : {
+                  "type" : "object",
+                  "properties" : {
+                    "codeValues" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "mobiles" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "dialNumber" : {
+                  "type" : "string"
+                },
+                "nameCode" : {
+                  "type" : "object",
+                  "properties" : {
+                    "codeValue" : {
+                      "type" : "string"
+                    }
+                  }
+                },
+                "countryDialing" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "person" : {
+        "type" : "object",
+        "properties" : {
+          "birthDate" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "formerNames" : {
+            "type" : "object",
+            "properties" : {
+              "formattedName" : {
+                "type" : "string"
+              }
+            }
+          },
+          "genderCode" : {
+            "$ref" : "#/components/schemas/genderCode"
+          },
+          "preferredName" : {
+            "type" : "object",
+            "properties" : {
+              "formattedName" : {
+                "type" : "string"
+              }
+            }
+          },
+          "governmentIDs" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/governmentIDs"
+            }
+          },
+          "legalName" : {
+            "$ref" : "#/components/schemas/legalName"
+          },
+          "legalAddress" : {
+            "$ref" : "#/components/schemas/legalAddress"
+          },
+          "communication" : {
+            "$ref" : "#/components/schemas/communication"
+          }
+        }
+      },
+      "workerDates" : {
+        "type" : "object",
+        "properties" : {
+          "adjustedServiceDate" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "originalHireDate" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "terminationDate" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "rehireDate" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }
+      },
+      "statusCode" : {
+        "type" : "object",
+        "properties" : {
+          "codeValue" : {
+            "type" : "string"
+          },
+          "shortName" : {
+            "type" : "string"
+          }
+        }
+      },
+      "workerStatus" : {
+        "type" : "object",
+        "properties" : {
+          "statusCode" : {
+            "$ref" : "#/components/schemas/statusCode"
+          }
+        }
+      },
+      "businessCommunication" : {
+        "type" : "object"
+      },
+      "indicatorFields" : {
+        "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "indicatorValue" : {
+              "type" : "boolean"
+            },
+            "nameCode" : {
+              "$ref" : "#/components/schemas/codeValueShortName"
+            }
+          }
+        }
+      },
+      "customFieldGroup" : {
+        "type" : "object",
+        "properties" : {
+          "codeFields" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "codeValue" : {
+                  "type" : "string"
+                },
+                "nameCode" : {
+                  "type" : "object",
+                  "properties" : {
+                    "shortName" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "indicatorFields" : {
+            "$ref" : "#/components/schemas/indicatorFields"
+          }
+        }
+      },
+      "address" : {
+        "type" : "object",
+        "properties" : {
+          "nameCode" : {
+            "type" : "object",
+            "properties" : {
+              "longName" : {
+                "type" : "string"
+              }
+            }
+          },
+          "lineOne" : {
+            "type" : "string"
+          },
+          "lineTwo" : {
+            "type" : "string"
+          },
+          "cityName" : {
+            "type" : "string"
+          },
+          "countryCode" : {
+            "type" : "string"
+          },
+          "postalCode" : {
+            "type" : "string"
+          },
+          "countrySubdivisionLevel1" : {
+            "$ref" : "#/components/schemas/countrySubdivisionLevel1"
+          }
+        }
+      },
+      "assignedWorkLocations" : {
+        "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "address" : {
+              "$ref" : "#/components/schemas/address"
+            }
           }
         }
       },
       "additionalRemunerations" : {
-        "type" : "object"
+        "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "rate" : {
+              "type" : "object",
+              "properties" : {
+                "amountValue" : {
+                  "type" : "integer",
+                  "format" : "int32"
+                },
+                "baseUnitCode" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "nameCode" : {
+              "$ref" : "#/components/schemas/codeValueShortName"
+            },
+            "associatedRateQualifiers" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "qualifierObjectNameCode" : {
+                    "$ref" : "#/components/schemas/codeValueShortName"
+                  }
+                }
+              }
+            }
+          }
+        }
       },
       "hourlyRateAmount" : {
         "type" : "object",
         "properties" : {
           "amountValue" : {
-            "type" : "string"
+            "type" : "integer",
+            "format" : "int32"
           },
           "currencyCode" : {
             "type" : "string"
@@ -537,6 +649,54 @@
         "properties" : {
           "hourlyRateAmount" : {
             "$ref" : "#/components/schemas/hourlyRateAmount"
+          },
+          "payPeriodRateAmount" : {
+            "type" : "object",
+            "properties" : {
+              "amountValue" : {
+                "type" : "integer",
+                "format" : "int32"
+              },
+              "currencyCode" : {
+                "type" : "string",
+                "enum" : [ "USD" ]
+              },
+              "nameCode" : {
+                "type" : "object",
+                "properties" : {
+                  "codeValue" : {
+                    "type" : "string"
+                  },
+                  "shortName" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          },
+          "annualRateAmount" : {
+            "type" : "object",
+            "properties" : {
+              "amountValue" : {
+                "type" : "integer",
+                "format" : "int32"
+              },
+              "currencyCode" : {
+                "type" : "string",
+                "enum" : [ "USD" ]
+              },
+              "nameCode" : {
+                "type" : "object",
+                "properties" : {
+                  "codeValue" : {
+                    "type" : "string"
+                  },
+                  "shortName" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -544,69 +704,75 @@
         "type" : "object",
         "properties" : {
           "hoursQuantity" : {
-            "type" : "string"
+            "type" : "integer",
+            "format" : "int32"
           }
         }
       },
       "workAssignments" : {
-        "type" : "object",
-        "properties" : {
-          "primaryIndicator" : {
-            "type" : "boolean"
-          },
-          "workerTypeCode" : {
-            "$ref" : "#/components/schemas/codeValueShortName"
-          },
-          "workLevelCode" : {
-            "$ref" : "#/components/schemas/codeValueShortName"
-          },
-          "remunerationBasisCode" : {
-            "$ref" : "#/components/schemas/codeValueShortName"
-          },
-          "payCycleCode" : {
-            "$ref" : "#/components/schemas/codeValueShortName"
-          },
-          "standardPayPeriodHours" : {
-            "$ref" : "#/components/schemas/standardPayPeriodHours"
-          },
-          "baseRemuneration" : {
-            "$ref" : "#/components/schemas/baseRemuneration"
-          },
-          "additionalRemunerations" : {
-            "$ref" : "#/components/schemas/additionalRemunerations"
-          },
-          "assignedWorkLocations" : {
-            "$ref" : "#/components/schemas/assignedWorkLocations"
+        "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "primaryIndicator" : {
+              "type" : "boolean"
+            },
+            "workerTypeCode" : {
+              "$ref" : "#/components/schemas/codeValueShortName"
+            },
+            "workLevelCode" : {
+              "$ref" : "#/components/schemas/codeValueShortName"
+            },
+            "remunerationBasisCode" : {
+              "$ref" : "#/components/schemas/codeValueShortName"
+            },
+            "payCycleCode" : {
+              "$ref" : "#/components/schemas/codeValueShortName"
+            },
+            "standardPayPeriodHours" : {
+              "$ref" : "#/components/schemas/standardPayPeriodHours"
+            },
+            "baseRemuneration" : {
+              "$ref" : "#/components/schemas/baseRemuneration"
+            },
+            "additionalRemunerations" : {
+              "$ref" : "#/components/schemas/additionalRemunerations"
+            },
+            "assignedWorkLocations" : {
+              "$ref" : "#/components/schemas/assignedWorkLocations"
+            }
           }
         }
       },
       "workers" : {
-        "type" : "object",
-        "properties" : {
-          "associateOID" : {
-            "type" : "string",
-            "description" : "A unique identifier of an associate"
-          },
-          "workerID" : {
-            "$ref" : "#/components/schemas/workerID"
-          },
-          "person" : {
-            "$ref" : "#/components/schemas/person"
-          },
-          "workerDates" : {
-            "$ref" : "#/components/schemas/workerDates"
-          },
-          "workerStatus" : {
-            "$ref" : "#/components/schemas/workerStatus"
-          },
-          "businessCommunication" : {
-            "$ref" : "#/components/schemas/businessCommunication"
-          },
-          "customFieldGroup" : {
-            "$ref" : "#/components/schemas/customFieldGroup"
-          },
-          "workAssignments" : {
-            "$ref" : "#/components/schemas/workAssignments"
+        "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "associateOID" : {
+              "type" : "string"
+            },
+            "workerID" : {
+              "$ref" : "#/components/schemas/workerID"
+            },
+            "person" : {
+              "$ref" : "#/components/schemas/person"
+            },
+            "workerDates" : {
+              "$ref" : "#/components/schemas/workerDates"
+            },
+            "workerStatus" : {
+              "$ref" : "#/components/schemas/workerStatus"
+            },
+            "businessCommunication" : {
+              "$ref" : "#/components/schemas/businessCommunication"
+            },
+            "customFieldGroup" : {
+              "$ref" : "#/components/schemas/customFieldGroup"
+            },
+            "workAssignments" : {
+              "$ref" : "#/components/schemas/workAssignments"
+            }
           }
         }
       }

@@ -859,7 +859,43 @@
               "$ref" : "#/components/schemas/baseRemuneration"
             },
             "additionalRemunerations" : {
-              "$ref" : "#/components/schemas/additionalRemunerations"
+              "type" : "array",
+              "description" : "A list of pay compensations associated to a given work assignment. Additional remuneration includes all other forms of compensation beyond the base pay associated to a given work assignment. The typeCode is used to further refine the type of compensation, e.g. bonus, commission, etc.",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "rate" : {
+                    "type" : "object",
+                    "properties" : {
+                      "amountValue" : {
+                        "type" : "integer",
+                        "description" : "TThe numeric value associated to the rate. In the example 5 US dollars per hour, the number 5 is the rate value. In the example 3 bags of rice per month, the number 3 is the rate value. In the example, 20 percent of annual sales, the amountValue would be 20",
+                        "format" : "int32"
+                      },
+                      "baseUnitCode" : {
+                        "type" : "string",
+                        "description" : "The code for the related entity. If this is a coded value, codeValue and shortName should be used. If this is just a string value, only shortName is necessary"
+                      }
+                    },
+                    "description" : "Pay rate"
+                  },
+                  "nameCode" : {
+                    "$ref" : "#/components/schemas/codeValueShortName"
+                  },
+                  "associatedRateQualifiers" : {
+                    "type" : "array",
+                    "description" : "Describes the conditions under which the associated rate can be expected",
+                    "items" : {
+                      "type" : "object",
+                      "properties" : {
+                        "qualifierObjectNameCode" : {
+                          "$ref" : "#/components/schemas/codeValueShortName"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             },
             "assignedWorkLocations" : {
               "$ref" : "#/components/schemas/assignedWorkLocations"

@@ -646,6 +646,7 @@
       },
       "assignedWorkLocations" : {
         "type" : "array",
+        "description" : "A list of work locations",
         "items" : {
           "type" : "object",
           "properties" : {

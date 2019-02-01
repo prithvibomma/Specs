@@ -468,9 +468,11 @@
             "type" : "object",
             "properties" : {
               "formattedName" : {
-                "type" : "string"
+                "type" : "string",
+                "description" : "A formatted version of the person name"
               }
-            }
+            },
+            "description" : "Former names of the person in the associated context"
           },
           "genderCode" : {
             "$ref" : "#/components/schemas/genderCode"
@@ -479,9 +481,11 @@
             "type" : "object",
             "properties" : {
               "formattedName" : {
-                "type" : "string"
+                "type" : "string",
+                "description" : "A formatted version of the person name"
               }
-            }
+            },
+            "description" : "The preferred name of the person in the associated context. A preferred name is often a variation on the current name that that the person has indicated as preferred. It is the full name by which the person wishes to be known within the context of the organization."
           },
           "governmentIDs" : {
             "type" : "array",
@@ -507,32 +511,40 @@
         "properties" : {
           "adjustedServiceDate" : {
             "type" : "string",
+            "description" : "The string representation of the date value. Follows the ISO-8601:2000 format",
             "format" : "date"
           },
           "originalHireDate" : {
             "type" : "string",
+            "description" : "The date the worker is first hired into an organization. Follows the ISO-8601:2000 format",
             "format" : "date"
           },
           "terminationDate" : {
             "type" : "string",
+            "description" : "The string representation of the date value. Follows the ISO-8601:2000 format",
             "format" : "date"
           },
           "rehireDate" : {
             "type" : "string",
+            "description" : "The string representation of the date value. Follows the ISO-8601:2000 format",
             "format" : "date"
           }
-        }
+        },
+        "description" : "These dates are related to the highest level legal relationship that a person has with the organization. If a given worker has multiple relationships with the organization, these are the dates associated with the primary relationship."
       },
       "statusCode" : {
         "type" : "object",
         "properties" : {
           "codeValue" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The code for the related entity."
           },
           "shortName" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Short description of the related code"
           }
-        }
+        },
+        "description" : "The status of the work assignment, e.g. active, inactive"
       },
       "workerStatus" : {
         "type" : "object",
@@ -540,18 +552,22 @@
           "statusCode" : {
             "$ref" : "#/components/schemas/statusCode"
           }
-        }
+        },
+        "description" : "Status to include the status code, effective date (ISO-8601:2000 format) and the reason for change"
       },
       "businessCommunication" : {
-        "type" : "object"
+        "type" : "object",
+        "description" : "A container of communication mechanisms."
       },
       "indicatorFields" : {
         "type" : "array",
+        "description" : "A list of custom indicators",
         "items" : {
           "type" : "object",
           "properties" : {
             "indicatorValue" : {
-              "type" : "boolean"
+              "type" : "boolean",
+              "description" : "Boolean expression"
             },
             "nameCode" : {
               "$ref" : "#/components/schemas/codeValueShortName"
@@ -568,13 +584,15 @@
               "type" : "object",
               "properties" : {
                 "codeValue" : {
-                  "type" : "string"
+                  "type" : "string",
+                  "description" : "Optional employee Identifier (used for the time partner integrations)"
                 },
                 "nameCode" : {
                   "type" : "object",
                   "properties" : {
                     "shortName" : {
-                      "type" : "string"
+                      "type" : "string",
+                      "description" : "Type of the identifier"
                     }
                   }
                 }
@@ -584,7 +602,8 @@
           "indicatorFields" : {
             "$ref" : "#/components/schemas/indicatorFields"
           }
-        }
+        },
+        "description" : "A container of custom fields. The category within each custom object allows for the categorizing or grouping of the associated custom field for the purpose of data mining. For example, the typeCode on a custom string object might be valued as SIZE and the correlating name codes might be t-shirt, pants, jacket, etc."
       },
       "address" : {
         "type" : "object",

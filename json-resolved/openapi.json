@@ -165,7 +165,12 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/workers"
+                  "type" : "object",
+                  "properties" : {
+                    "workers" : {
+                      "$ref" : "#/components/schemas/workers"
+                    }
+                  }
                 }
               }
             }

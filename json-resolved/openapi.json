@@ -347,7 +347,8 @@
             "type" : "string",
             "description" : "The type of city sub division, e.g. borough, neighborhood"
           }
-        }
+        },
+        "description" : "A country sub-division correlating to a administrative level one or two levels below country. For example, in the United States, this might be a state or a county"
       },
       "legalAddress" : {
         "type" : "object",
@@ -612,29 +613,36 @@
             "type" : "object",
             "properties" : {
               "longName" : {
-                "type" : "string"
+                "type" : "string",
+                "description" : "Long description of the related code"
               }
             }
           },
           "lineOne" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Line One of Street Address Information"
           },
           "lineTwo" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Line Two of Street Address Information"
           },
           "cityName" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "A city in the context of an address"
           },
           "countryCode" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "A simple (string) code. Can have a code list reference"
           },
           "postalCode" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The string of characters used to identify the postal code"
           },
           "countrySubdivisionLevel1" : {
             "$ref" : "#/components/schemas/countrySubdivisionLevel1"
           }
-        }
+        },
+        "description" : "organization address objects / components"
       },
       "assignedWorkLocations" : {
         "type" : "array",

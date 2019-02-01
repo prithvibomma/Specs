@@ -279,15 +279,19 @@
         "type" : "object",
         "properties" : {
           "codeValue" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The code for the related entity."
           },
           "shortName" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Short description of the related code"
           },
           "longName" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Long description of the related code"
           }
-        }
+        },
+        "description" : "The gender of a person, e.g. Male, Female"
       },
       "nameCode" : {
         "type" : "object",

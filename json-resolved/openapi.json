@@ -155,7 +155,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Returns all the available workers that the requester is authorized to view",
+            "description" : "Returns the requested Worker",
             "content" : {
               "application/json" : {
                 "schema" : {

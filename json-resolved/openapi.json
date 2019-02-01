@@ -705,12 +705,14 @@
             "format" : "int32"
           },
           "currencyCode" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "A simple (string) code. Can have a code list reference"
           },
           "nameCode" : {
             "$ref" : "#/components/schemas/codeValueShortName"
           }
-        }
+        },
+        "description" : "The hourly rate amount"
       },
       "baseRemuneration" : {
         "type" : "object",
@@ -766,7 +768,8 @@
               }
             }
           }
-        }
+        },
+        "description" : "The base or primary pay (i.e. salary, wage) associated to a work assignment. The structure allows for the explicit communication of pre-defined equivalents for the base remuneration"
       },
       "standardPayPeriodHours" : {
         "type" : "object",

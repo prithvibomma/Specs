@@ -404,7 +404,8 @@
                   "type" : "object",
                   "properties" : {
                     "codeValue" : {
-                      "type" : "string"
+                      "type" : "string",
+                      "description" : "The code for the related entity"
                     }
                   },
                   "description" : "The code for the related entity"

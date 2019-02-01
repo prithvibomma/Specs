@@ -258,13 +258,15 @@
           "shortName" : {
             "type" : "string"
           }
-        }
+        },
+        "description" : "Company level Identifier of the employee in RUN"
       },
       "workerID" : {
         "type" : "object",
         "properties" : {
           "idValue" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Company level Identifier of the employee in RUN"
           },
           "schemeCode" : {
             "$ref" : "#/components/schemas/schemecode"
@@ -289,24 +291,29 @@
         "type" : "object",
         "properties" : {
           "codeValue" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The code for the related entity."
           },
           "shortName" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Short description of the related code not to exceed 25 characters"
           }
-        }
+        },
+        "description" : "A coded name or descriptive label of the associated entity. If this is a coded value, codeValue and shortName should be used. If this is just a string value, only shortName is necessary"
       },
       "governmentIDs" : {
         "type" : "object",
         "properties" : {
           "idValue" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "An actual ID"
           },
           "nameCode" : {
             "$ref" : "#/components/schemas/nameCode"
           },
           "countryCode" : {
             "type" : "string",
+            "description" : "Country in which the Address is in. ISO_3166-1-alpha-2 code list",
             "enum" : [ "US" ]
           }
         }
@@ -315,24 +322,30 @@
         "type" : "object",
         "properties" : {
           "givenName" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The first name of the person"
           },
           "familyName1" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Person family name 1"
           },
           "middleName" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Person middle name or initial"
           }
-        }
+        },
+        "description" : "The current legal name of the person in the associated context. For example, if the context is set to Germany, this equates to the legal name of the person in Germany."
       },
       "countrySubdivisionLevel1" : {
         "type" : "object",
         "properties" : {
           "codeValue" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The code for the related entity."
           },
           "subdivisionType" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The type of city sub division, e.g. borough, neighborhood"
           }
         }
       },
@@ -340,36 +353,44 @@
         "type" : "object",
         "properties" : {
           "lineOne" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Line One of Street Address Information"
           },
           "lineTwo" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Line Two of Street Address Information"
           },
           "cityName" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "A city in the context of an address"
           },
           "countryCode" : {
             "type" : "string",
+            "description" : "The 2 character country code. As per ISO 3166-1 Alpha 2",
             "enum" : [ "US" ]
           },
           "postalCode" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "The string of characters used to identify the postal code"
           },
           "countrySubdivisionLevel1" : {
             "$ref" : "#/components/schemas/countrySubdivisionLevel1"
           }
-        }
+        },
+        "description" : "This is the primary residential address that is used by an organization for payroll, taxation, and benefit program eligibility"
       },
       "communication" : {
         "type" : "object",
         "properties" : {
           "emails" : {
             "type" : "array",
+            "description" : "A list of email addresses",
             "items" : {
               "type" : "object",
               "properties" : {
                 "emailUri" : {
                   "type" : "string",
+                  "description" : "The URI of the associated email address",
                   "format" : "email"
                 },
                 "nameCode" : {
@@ -378,24 +399,28 @@
                     "codeValue" : {
                       "type" : "string"
                     }
-                  }
+                  },
+                  "description" : "The code for the related entity"
                 }
               }
             }
           },
           "landLines" : {
             "type" : "array",
+            "description" : "A list of land-line telephone numbers",
             "items" : {
               "type" : "object",
               "properties" : {
                 "dialNumber" : {
-                  "type" : "string"
+                  "type" : "string",
+                  "description" : "A list of land-line telephone numbers"
                 },
                 "nameCode" : {
                   "type" : "object",
                   "properties" : {
-                    "codeValues" : {
-                      "type" : "string"
+                    "codeValue" : {
+                      "type" : "string",
+                      "description" : "The code for the related entity"
                     }
                   }
                 }
@@ -404,33 +429,39 @@
           },
           "mobiles" : {
             "type" : "array",
+            "description" : "A list of mobile telephone numbers",
             "items" : {
               "type" : "object",
               "properties" : {
                 "dialNumber" : {
-                  "type" : "string"
+                  "type" : "string",
+                  "description" : "The local communication number, not including country dialing or area dialing codes. If component parts of the telephone number are being communicated then the dialNumber is required."
                 },
                 "nameCode" : {
                   "type" : "object",
                   "properties" : {
                     "codeValue" : {
-                      "type" : "string"
+                      "type" : "string",
+                      "description" : "The code for the related entity"
                     }
                   }
                 },
                 "countryDialing" : {
-                  "type" : "string"
+                  "type" : "string",
+                  "description" : "The country dialing code is the national prefix to be used when dialing TO that particular country FROM another country."
                 }
               }
             }
           }
-        }
+        },
+        "description" : "A container of communication mechanisms"
       },
       "person" : {
         "type" : "object",
         "properties" : {
           "birthDate" : {
             "type" : "string",
+            "description" : "The birth date of the person. Follows the ISO-8601:2000 format",
             "format" : "date"
           },
           "formerNames" : {
@@ -454,6 +485,7 @@
           },
           "governmentIDs" : {
             "type" : "array",
+            "description" : "A list of government identifiersA government identifier, e.g. a national identity number or a social insurance number",
             "items" : {
               "$ref" : "#/components/schemas/governmentIDs"
             }
@@ -467,7 +499,8 @@
           "communication" : {
             "$ref" : "#/components/schemas/communication"
           }
-        }
+        },
+        "description" : "An associate is a person with a relationship to an organization"
       },
       "workerDates" : {
         "type" : "object",
@@ -746,11 +779,13 @@
       },
       "workers" : {
         "type" : "array",
+        "description" : "A worker is someone who performs duties and has responsibilities for an organization",
         "items" : {
           "type" : "object",
           "properties" : {
             "associateOID" : {
-              "type" : "string"
+              "type" : "string",
+              "description" : "A unique identifier of an associate"
             },
             "workerID" : {
               "$ref" : "#/components/schemas/workerID"

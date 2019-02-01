@@ -699,9 +699,8 @@
               "type" : "object",
               "properties" : {
                 "amountValue" : {
-                  "type" : "integer",
-                  "description" : "TThe numeric value associated to the rate. In the example 5 US dollars per hour, the number 5 is the rate value. In the example 3 bags of rice per month, the number 3 is the rate value. In the example, 20 percent of annual sales, the amountValue would be 20",
-                  "format" : "int32"
+                  "type" : "number",
+                  "description" : "TThe numeric value associated to the rate. In the example 5 US dollars per hour, the number 5 is the rate value. In the example 3 bags of rice per month, the number 3 is the rate value. In the example, 20 percent of annual sales, the amountValue would be 20"
                 },
                 "baseUnitCode" : {
                   "type" : "string",
@@ -732,9 +731,8 @@
         "type" : "object",
         "properties" : {
           "amountValue" : {
-            "type" : "integer",
-            "description" : "The numeric value associated to the rate. In the example 5 US dollars per hour, the number 5 is the rate value. In the example 3 bags of rice per month, the number 3 is the rate value. In the example, 20 percent of annual sales, the amountValue would be 20",
-            "format" : "int32"
+            "type" : "number",
+            "description" : "The numeric value associated to the rate. In the example 5 US dollars per hour, the number 5 is the rate value. In the example 3 bags of rice per month, the number 3 is the rate value. In the example, 20 percent of annual sales, the amountValue would be 20"
           },
           "currencyCode" : {
             "type" : "string",
@@ -756,9 +754,8 @@
             "type" : "object",
             "properties" : {
               "amountValue" : {
-                "type" : "integer",
-                "description" : "The numeric value associated to the rate. In the example 5 US dollars per hour, the number 5 is the rate value. In the example 3 bags of rice per month, the number 3 is the rate value. In the example, 20 percent of annual sales, the amountValue would be 20",
-                "format" : "int32"
+                "type" : "number",
+                "description" : "The numeric value associated to the rate. In the example 5 US dollars per hour, the number 5 is the rate value. In the example 3 bags of rice per month, the number 3 is the rate value. In the example, 20 percent of annual sales, the amountValue would be 20"
               },
               "currencyCode" : {
                 "type" : "string",
@@ -785,9 +782,8 @@
             "type" : "object",
             "properties" : {
               "amountValue" : {
-                "type" : "integer",
-                "description" : "The numeric value associated to the rate. In the example 5 US dollars per hour, the number 5 is the rate value. In the example 3 bags of rice per month, the number 3 is the rate value. In the example, 20 percent of annual sales, the amountValue would be 20",
-                "format" : "int32"
+                "type" : "number",
+                "description" : "The numeric value associated to the rate. In the example 5 US dollars per hour, the number 5 is the rate value. In the example 3 bags of rice per month, the number 3 is the rate value. In the example, 20 percent of annual sales, the amountValue would be 20"
               },
               "currencyCode" : {
                 "type" : "string",
@@ -817,9 +813,8 @@
         "type" : "object",
         "properties" : {
           "hoursQuantity" : {
-            "type" : "integer",
-            "description" : "The number of hours",
-            "format" : "int32"
+            "type" : "number",
+            "description" : "The number of hours"
           }
         },
         "description" : "The standard number of hours per pay period"

@@ -565,6 +565,39 @@
       },
       "businessCommunication" : {
         "type" : "object",
+        "properties" : {
+          "emails" : {
+            "type" : "array",
+            "description" : "A list of email addresses",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "emailUri" : {
+                  "type" : "string",
+                  "description" : "The URI of the associated email address",
+                  "format" : "email"
+                }
+              }
+            }
+          },
+          "landLines" : {
+            "type" : "array",
+            "description" : "A list of land-line telephone numbers",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "dialNumber" : {
+                  "type" : "string",
+                  "description" : "A list of land-line telephone numbers"
+                },
+                "extension" : {
+                  "type" : "string",
+                  "description" : "The extension of the local communication number. In the case of a Telephone Number accessing a Pager Network, the extension may be the Pager Identification Number required to leave a message for the Pager Number (i.e. Pager Pin). These are mutually exclusive."
+                }
+              }
+            }
+          }
+        },
         "description" : "A container of communication mechanisms."
       },
       "indicatorFields" : {

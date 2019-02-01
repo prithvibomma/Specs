@@ -245,10 +245,12 @@
         "type" : "object",
         "properties" : {
           "codeValue" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Department code"
           },
           "shortName" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "Department name"
           }
         }
       },
@@ -682,6 +684,7 @@
             },
             "associatedRateQualifiers" : {
               "type" : "array",
+              "description" : "Describes the conditions under which the associated rate can be expected",
               "items" : {
                 "type" : "object",
                 "properties" : {

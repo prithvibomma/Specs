@@ -702,6 +702,7 @@
         "properties" : {
           "amountValue" : {
             "type" : "integer",
+            "description" : "The numeric value associated to the rate. In the example 5 US dollars per hour, the number 5 is the rate value. In the example 3 bags of rice per month, the number 3 is the rate value. In the example, 20 percent of annual sales, the amountValue would be 20",
             "format" : "int32"
           },
           "currencyCode" : {
@@ -725,48 +726,58 @@
             "properties" : {
               "amountValue" : {
                 "type" : "integer",
+                "description" : "The numeric value associated to the rate. In the example 5 US dollars per hour, the number 5 is the rate value. In the example 3 bags of rice per month, the number 3 is the rate value. In the example, 20 percent of annual sales, the amountValue would be 20",
                 "format" : "int32"
               },
               "currencyCode" : {
                 "type" : "string",
+                "description" : "A simple (string) code. Can have a code list reference",
                 "enum" : [ "USD" ]
               },
               "nameCode" : {
                 "type" : "object",
                 "properties" : {
                   "codeValue" : {
-                    "type" : "string"
+                    "type" : "string",
+                    "description" : "RateCode name asscoaited with the rate."
                   },
                   "shortName" : {
-                    "type" : "string"
+                    "type" : "string",
+                    "description" : "Short description of the related code"
                   }
                 }
               }
-            }
+            },
+            "description" : "The pay period rate amount"
           },
           "annualRateAmount" : {
             "type" : "object",
             "properties" : {
               "amountValue" : {
                 "type" : "integer",
+                "description" : "The numeric value associated to the rate. In the example 5 US dollars per hour, the number 5 is the rate value. In the example 3 bags of rice per month, the number 3 is the rate value. In the example, 20 percent of annual sales, the amountValue would be 20",
                 "format" : "int32"
               },
               "currencyCode" : {
                 "type" : "string",
+                "description" : "A simple (string) code. Can have a code list reference",
                 "enum" : [ "USD" ]
               },
               "nameCode" : {
                 "type" : "object",
                 "properties" : {
                   "codeValue" : {
-                    "type" : "string"
+                    "type" : "string",
+                    "description" : "The code for the related entity"
                   },
                   "shortName" : {
-                    "type" : "string"
+                    "type" : "string",
+                    "description" : "Short description of the related code"
                   }
                 }
               }
-            }
+            },
+            "description" : "A representation of a rate amount value"
           }
         },
         "description" : "The base or primary pay (i.e. salary, wage) associated to a work assignment. The structure allows for the explicit communication of pre-defined equivalents for the base remuneration"
@@ -776,12 +787,15 @@
         "properties" : {
           "hoursQuantity" : {
             "type" : "integer",
+            "description" : "The number of hours",
             "format" : "int32"
           }
-        }
+        },
+        "description" : "The standard number of hours per pay period"
       },
       "workAssignments" : {
         "type" : "array",
+        "description" : "An object describing the details of a work assignment. A work assignment pertains to the duties and responsibilities that should be performed by the worker",
         "items" : {
           "type" : "object",
           "properties" : {

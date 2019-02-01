@@ -115,14 +115,8 @@
               }
             }
           }
-        },
-        "servers" : [ {
-          "url" : "http://adpmobile.esi.adp.com"
-        } ]
-      },
-      "servers" : [ {
-        "url" : "http://adpmobile.esi.adp.com"
-      } ]
+        }
+      }
     },
     "/hr/v2/workers/{aoid}" : {
       "get" : {
@@ -234,14 +228,8 @@
               }
             }
           }
-        },
-        "servers" : [ {
-          "url" : "http://adpmobile.esi.adp.com"
-        } ]
-      },
-      "servers" : [ {
-        "url" : "http://adpmobile.esi.adp.com"
-      } ]
+        }
+      }
     }
   },
   "components" : {
